@@ -1,6 +1,7 @@
 import missionImg from "../assets/mission.jpeg"
 import mission from "../assets/mission.mp4"
 import { MISSION } from "../constants"
+import { motion } from "framer-motion"
 
 const Mission = () => {
   return (
@@ -10,14 +11,26 @@ const Mission = () => {
                 Our Mission
             </h2>
             <div className='relative flex items-center justify-center'>
-                <video  className='w-full rounded-3xl' autoPlay muted loop playsInline poster={missionImg}>
+                <motion.video 
+                initial={{opacity:0}}
+                whileInView={{opacity:1}}
+                viewport={{once:true}}
+                transition={{duration:1}}
+
+                className='w-full rounded-3xl' autoPlay muted loop playsInline poster={missionImg}>
                     <source src={mission} type="video/mp4" />
-                </video>
+                </motion.video>
                 <div className="obsolute h-full w-full rounded-3xl bg-black/40">
                 </div>
-                <p className="absolute max-w-lg tracking-tighter lg:text-3xl">
+                <motion.p
+                initial={{opacity:0, y:20}}
+                whileInView={{opacity:1,y:0}}
+                viewport={{once: true}}
+                transition={{duration:1, delay:0.5}}
+
+                className="absolute max-w-lg tracking-tighter lg:text-3xl">
                     {MISSION}
-                </p>
+                </motion.p>
             </div>
         </div>
     </section>
